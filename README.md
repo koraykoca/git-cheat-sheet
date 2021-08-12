@@ -82,4 +82,12 @@ git branch -d branch_name      # deleting the new branch
 
 ### Updating Forked Repository 
 
-When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them.  
+When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them. First of all, we need to go to the directory where we cloned the repository. We set the original repository as our upstream repository and we fetch the upstream from the original repository. After that, we will checkout to the branch which was newly added to the original repository and pull the changes into our local repository then push to the forked repository. The process is as following:
+
+```ruby
+git remote add upstream original_repo_url
+git fetch upstream
+git checkout -b original_repo_branch_to_transfer
+git pull upstream original_repo_branch_to_transfer
+git push --set-upstream origin original_repo_branch_to_transfer
+```

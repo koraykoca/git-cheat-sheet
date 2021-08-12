@@ -23,7 +23,10 @@ After cloning the repository, we can see them locally. Now we can make changes o
 
 ```ruby
 git add --all
+# or we can specify the file
 git add name_of_the_file
+# or we can specify many files
+git add name_of_the_file1 name_of_the_file2 name_of_the_file3 
 ```
 
 We check always the status of our GIT using _**git status**_ command. It will tell us what has been changed. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:

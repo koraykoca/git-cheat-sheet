@@ -1,4 +1,4 @@
-# GIT (a Version Control System)
+# GIT - a Version Control System
 
 GIT is a Version Control System (VCS) which is widely used in practice. It makes easier to work on a project as a team. You can track changes on the code and communicate with your team mates through the code remotely.
 
@@ -32,15 +32,25 @@ git add name_of_the_file1 name_of_the_file2 name_of_the_file3
 We check always the status of our GIT using _**git status**_ command. It will tell us what has been changed. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
 
 ```ruby
-git commit name_of_the_file -m "message_or_explanation"
+git commit name_of_the_file -m "commit_message"
 ```
 
+After this step, if we want to rewrite the very last commit, we can use _**git commit --amend -m "new_commit_message"**_. 
+
 Now we are ready to send our changes to the online repository, so that they can be shared with the rest of the world. However, when somebody else on our team made some changes in the repository which we don't have them on our local repository, we need to _**pull**_ these remote changes because there is some kind of conflicts between what we have locally and what is living online. In this case _**git pull**_ command takes recent changes that are living on the remote repository and get them to the local repository.
-After that we can send our changes without problem with _**git push**_ command.
+After that we can send our changes without problem with _**git push**_ command. We can check where our remote target is with _**git remote -v**_ command.
 
 ```ruby
 git push
 ```
+
+_**git pull**_ command is also used to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
+
+- There is an accessible Repository,
+- You can fork it,
+- You can clone the forked repository and make changes in your own fork,
+- you can push your changes to your own fork,
+- or you can make a pull request from your own fork and the owner of the upstream repository, which you cannot push directly to, will decide whether or not to merge your pull request.
 
 ## GIT Branching
 

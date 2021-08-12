@@ -9,7 +9,7 @@ You can create your own repository or you can fork a repository which is already
 Firstly you need to clone the repository on your local machine. If we work on someone else's project, we need to fork the project first. Then we will use _**git clone**_ command as following:
 
 ```ruby
-git clone url_of_the_repository
+git clone repository_url
 ```
 
 With this code, you will clone whole project with all branches. When you clone a repository for the first time, GIT can ask about your identity. In this case we will set our e-mail address and initialize the git as:
@@ -24,9 +24,9 @@ After cloning the repository, we can see them locally. Now we can make changes o
 ```ruby
 git add --all
 # or we can specify the file
-git add name_of_the_file
+git add file1_name
 # or we can specify many files
-git add name_of_the_file1 name_of_the_file2 name_of_the_file3 
+git add file1_name file2_name file3_name 
 ```
 
 We check always the status of our GIT using _**git status**_ command. It will tell us what has been changed. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:

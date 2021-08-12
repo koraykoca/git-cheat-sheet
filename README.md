@@ -29,7 +29,7 @@ git add file1_name
 git add file1_name file2_name file3_name 
 ```
 
-We check always the status of our GIT using _**git status**_ command. It will tell us what has been changed. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
+When we want to discard changes and undo the add command, we can use _**git reset file_name**_ command. We check always the status of our GIT using _**git status**_ command. This command shows us what branch we're on, what files are in the working or staging directory, and any other important information. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
 
 ```ruby
 git commit name_of_the_file -m "commit_message"
@@ -38,7 +38,7 @@ git commit name_of_the_file -m "commit_message"
 After this step, if we want to rewrite the very last commit, we can use _**git commit --amend -m "new_commit_message"**_. 
 
 Now we are ready to send our changes to the online repository, so that they can be shared with the rest of the world. However, when somebody else on our team made some changes in the repository which we don't have them on our local repository, we need to _**pull**_ these remote changes because there is some kind of conflicts between what we have locally and what is living online. In this case _**git pull**_ command takes recent changes that are living on the remote repository and get them to the local repository.
-After that we can send our changes without problem with _**git push**_ command. We can check where our remote target is with _**git remote -v**_ command.
+After that we can send our changes without problem with _**git push**_ command. This command uploads all local branch commits to the remote. We can check where our remote target is with _**git remote -v**_ command.
 
 ```ruby
 git push
@@ -54,7 +54,7 @@ _**git pull**_ command is also used to ask owner of the project to pull your cha
 
 ## GIT Branching
 
-Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command.
+Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command. This command switches to the specified branch and updates the working directory.
 
 ```ruby
 git branch branch_name

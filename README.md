@@ -79,3 +79,7 @@ git merge branch_name          # get changes back to the main branch
 git push                       # changes pushed to the main branch
 git branch -d branch_name      # deleting the new branch
 ```
+
+### Updating Forked Repository 
+
+When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them.  

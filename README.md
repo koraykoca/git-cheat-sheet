@@ -12,14 +12,7 @@ Firstly you need to clone the repository on your local machine. If we work on so
 git clone repository_url
 ```
 
-With this code, you will clone whole project with all branches. When you clone a repository for the first time, GIT can ask about your identity. In this case we will set our e-mail address and initialize the git as:
-
-```ruby
-git config user.email "email_address"
-git init
-```
-
-After cloning the repository, we can see them locally. Now we can make changes on them on our machine. After editing, we can send our local changes to the online repository so that our teammates will be able to see our changes. For this, we use _**git add**_ command. If we want to add all files we made changes on, then we can use _**git add --all**_ command. When we want to add only a specific file, we use _**git add name_of_the_file**_:
+With this code, you will clone whole project with all branches. After cloning the repository, we can see them locally. Now we can make changes on them on our machine. After editing, we can send our local changes to the online repository so that our teammates will be able to see our changes. For this, we use _**git add**_ command. If we want to add all files we made changes on, then we can use _**git add --all**_ command. When we want to add only a specific file, we use _**git add name_of_the_file**_:
 
 ```ruby
 git add --all
@@ -35,7 +28,13 @@ When we want to discard changes and undo the add command, we can use _**git rese
 git commit name_of_the_file -m "commit_message"
 ```
 
-After this step, if we want to rewrite the very last commit, we can use _**git commit --amend -m "new_commit_message"**_. 
+GIT can ask about our identity after executing this command. In this case we will set our e-mail address as:
+
+```ruby
+git config user.email "email_address"
+```
+
+Then we need to commit the files again. Sometimes after committing, we may want to rewrite the very last commit. In this case we can use _**git commit --amend -m "new_commit_message"**_. 
 
 Now we are ready to send our changes to the online repository, so that they can be shared with the rest of the world. However, when somebody else on our team made some changes in the repository which we don't have them on our local repository, we need to _**pull**_ these remote changes because there is some kind of conflicts between what we have locally and what is living online. In this case _**git pull**_ command takes recent changes that are living on the remote repository and get them to the local repository.
 After that we can send our changes without problem with _**git push**_ command. This command uploads all local branch commits to the remote. We can check where our remote target is with _**git remote -v**_ command.

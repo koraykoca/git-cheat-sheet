@@ -98,4 +98,4 @@ git branch -d branch_name  # delete branch locally
 git push origin --delete branch_name  # delete branch remotely
 ```
 
-#### Reference: [Git-Book] (http://git-scm.com/book/en/v2)
+#### Reference: [Git-Book](http://git-scm.com/book/en/v2)

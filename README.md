@@ -83,17 +83,17 @@ git branch -d branch_name      # deleting the new branch
 
 When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them. First of all, we need to go to the directory where we cloned the repository. We set the original repository as our upstream repository and we fetch the upstream from the original repository. After that, we will create and checkout to the branch which was newly added to the original repository (to create a branch in the same repo, _**git branch branch_name**_ or, more commonly _**git checkout -b branch_name**_, the latter creates the branch then checks it out so we can immediately start working on it) and pull the changes into our local repository then push to the forked repository. The process is as following:
 
-
-git remote add upstream original_repo_url // upstream points the original repo
-git fetch upstream  // fetch tells git “go get this remote data, and shove it into a “remote” branch in my repo. 
+```ruby
+git remote add upstream original_repo_url  # upstream points the original repo
+git fetch upstream   # fetch tells git “go get this remote data, and shove it into a “remote” branch in my repo. 
 git checkout -b original_repo_branch_to_transfer
-git pull upstream original_repo_branch_to_transfer // pull says, “fetch it, and also merge it with my current branch.
+git pull upstream original_repo_branch_to_transfer  # pull says, “fetch it, and also merge it with my current branch.
 git push --set-upstream origin original_repo_branch_to_transfer
 ```
 
 ### Deleting Branches
 
 ```ruby
-git branch -d branch_name # delete branch locally
-git push origin --delete branch_name # delete branch remotely
+git branch -d branch_name  # delete branch locally
+git push origin --delete branch_name  # delete branch remotely
 ```

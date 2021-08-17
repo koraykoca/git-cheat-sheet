@@ -92,6 +92,7 @@ git push --set-upstream origin original_repo_branch_to_transfer
 ```
 
 ### Deleting Branches
+
 ```ruby
 git branch -d branch_name // delete branch locally
 git push origin --delete branch_name // delete branch remotely

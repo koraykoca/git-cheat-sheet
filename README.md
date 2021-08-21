@@ -43,7 +43,7 @@ After that we can send our changes without problem with _**git push**_ command. 
 git push
 ```
 
-_**PUll request**_ is made to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
+_**Pull request**_ is created to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
 
 - There is an accessible Repository,
 - You can fork it,

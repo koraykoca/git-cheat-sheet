@@ -81,6 +81,7 @@ git branch -d branch_name      # deleting the new branch
 
 ### Git stash
 git stash command is great when we are not ready to commit the changes, but we want to switch branches or we want to rewert back temporarily to where you started. We can do a stash on these changes and git will save them in a temporary space. 
+```ruby
 git stash save "a_message"  # create a stash
 git stash list              # see the stashes 
 git stash apply stash_id    # apply the changes in the stash
@@ -88,6 +89,7 @@ git checkout -- .           # to reset changes in the file
 git stash pop               # take the first stash in the list , apply those changes and delete/drop the stash 
 git stash drop stas_id      # delete the stash
 git stash clear             # delete all stashes
+```
 
 ### Updating Forked Repository 
 

@@ -103,11 +103,17 @@ git pull upstream original_repo_branch_to_transfer  # pull says, “fetch it, an
 git push --set-upstream origin original_repo_branch_to_transfer
 ```
 
-### Deleting Branches
+### Operations with Branches
 
 ```ruby
-git branch -d branch_name  # delete branch locally
-git push origin --delete branch_name  # delete branch remotely
+git branch -a                             # to see branches
+git remote set-head origin -a             # to make current checkouted branch origin
+git branch -m <oldname> <newname>         # to change the name of a branch
+git branch -u origin/<BRANCH> <BRANCH>    # to set up a branch to track a remote branch
+git branch -d branch_name                 # to delete branch locally
+git push origin --delete branch_name      # to delete branch remotely
+git fetch origin                          # to retrieve all branches and updates
+git fetch origin --prune                  # to connect to a shared remote repository remote and fetch all remote branch refs. It will then delete remote refs that are no longer in use on the remote repository
 ```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

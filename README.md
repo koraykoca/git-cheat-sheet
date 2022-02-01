@@ -116,4 +116,15 @@ git fetch origin                          # to retrieve all branches and updates
 git fetch origin --prune                  # to connect to a shared remote repository remote and fetch all remote branch refs. It will then delete remote refs that are no longer in use on the remote repository
 ```
 
+### Import Repo from Github to Gitlab
+```ruby
+git remote add gitlab gitlab_repo_url
+git push gitlab
+```
+
+to merge branches from two projects
+```ruby
+git merge branch_name --allow-unrelated-histories
+```
+
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

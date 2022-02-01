@@ -118,8 +118,8 @@ git fetch origin --prune                  # to connect to a shared remote reposi
 
 ### Import Repo from Github to Gitlab
 ```ruby
-git remote add gitlab gitlab_repo_url
-git push gitlab
+git remote add gitlab gitlab_repo_url     # Add the new gitlab remote to your existing repository
+git push gitlab                           # then push
 ```
 
 to merge branches from two projects

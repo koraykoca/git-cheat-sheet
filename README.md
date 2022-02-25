@@ -8,7 +8,12 @@ You can create your own repository or you can fork a repository which is already
 
 ## Basic GIT Commands
 
-Firstly you need to clone the repository on your local machine. If we work on someone else's project, we need to fork the project first. Then we will use _**git clone**_ command as following:
+Before you are able to create Git commits, you need to tell Git who you are. Run in your terminal:
+
+git config --global user.name "My Name"
+git config --global user.email "my email"
+
+To start a repository in the current directory, use _**git init**_. Or clone the repository on your local machine. If we work on someone else's project, we need to fork the project first. Then we will use _**git clone**_ command as following:
 
 ```ruby
 git clone repository_url

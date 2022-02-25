@@ -2,6 +2,8 @@
 
 GIT is a Version Control System (VCS) which is widely used in practice. It makes easier to work on a project as a team. You can track changes on the code and communicate with your team mates through the code remotely.
 
+In the Git version control system, every state is called a commit, which describes the changes from the previous version. Every file in the project, together with the history, is stored in a repository (a directory). You can manage Git repositories either from your IDE, or from the command line.
+
 You can create your own repository or you can fork a repository which is already created by someone else. I will explain some important GIT commands in this blog.
 
 ## Basic GIT Commands

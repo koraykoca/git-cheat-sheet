@@ -135,7 +135,7 @@ git merge branch_name --allow-unrelated-histories
 ```
 ### push to both Github and Gitlab 
 ```ruby
-git remote set-url –add origin https://github.com/user/repo.git
+git remote set-url –-add origin <github_url>
 ```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

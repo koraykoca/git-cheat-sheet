@@ -133,5 +133,9 @@ to merge branches from two projects
 ```ruby
 git merge branch_name --allow-unrelated-histories
 ```
+### push to both Github and Gitlab 
+```ruby
+git remote set-url –add origin https://github.com/user/repo.git
+```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

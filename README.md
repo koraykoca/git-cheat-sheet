@@ -27,6 +27,8 @@ git add --all
 git add file1_name
 # or we can specify many files
 git add file1_name file2_name file3_name 
+# we can decide which changes to include in the current commit
+git add -p
 ```
 
 When we want to discard changes and undo the add command, we can use _**git reset file_name**_ command. We check always the status of our GIT using _**git status**_ command. This command shows us what branch we're on, what files are in the working or staging directory, and any other important information. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
@@ -96,6 +98,13 @@ git checkout -- .           # to reset changes in the file
 git stash pop               # take the first stash in the list , apply those changes and delete/drop the stash 
 git stash drop stas_id      # delete the stash
 git stash clear             # delete all stashes
+```
+
+We need to commit our changes then pull the remote repo then we push our changes. A good workaround for this is following:
+```ruby
+git stash       # put aside all the uncommitted changes you have 
+git pull        # do whatever you want, for example pull
+git stash pop   # get the latest item you put aside
 ```
 
 ### Updating Forked Repository 

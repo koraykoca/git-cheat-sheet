@@ -79,17 +79,24 @@ It's typical to create a new branch and switch to that new branch at the same ti
 git checkout -b branch_name
 ```
 
-When we want to push something that is in our new branch, we need to first switch to the main branch. Then, we use _**git merge**_ command to merge our new branch into the main branch. After merging, we will be done with the new branch which we created and can delete it with _**git branch -d branch_name**_. If we don't want to delete and keep the branch also on the remote repository, we use _**git push origin branch_name**_. But generally, the whole process will be like as the following:
-
+When we want to push something that is in our new branch, we need to first switch to the main branch. Then, we use _**git merge**_ command to merge our new branch into the main branch. After merging, we will be done with the new branch which we created and can delete it with _**git branch -d branch_name**_. If we don't want to delete and keep the branch also on the remote repository, we use 
 ```ruby
-git checkout -b branch_name    # branch creating and switching to it
+git push --set-upstream origin <branch_name>
+```
+But generally, the whole process will be like as the following:
+```ruby
+git checkout -b <branch_name>  # branch creating and switching to it
 # Some changes on the files
-git add file_name              # changes are staged in order to be committed
+git add <file_name>            # changes are staged in order to be committed
 git commit -m "some_message"   # telling what you changed/did
 git checkout main              # switching to the main branch
-git merge branch_name          # get changes back to the main branch
+git merge <branch_name>        # get changes back to the main branch
 git push                       # changes pushed to the main branch
-git branch -d branch_name      # deleting the new branch
+git branch -d <branch_name>    # deleting the new branch
+```
+If we want to delete a remote branch: 
+```ruby
+git push origin --delete <branch_name>
 ```
 
 ### Git stash

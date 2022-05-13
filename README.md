@@ -150,5 +150,14 @@ git merge branch_name --allow-unrelated-histories
 ```ruby
 git remote set-url –-add origin <github_url>
 ```
-
+### .gitignore file
+Sometimes we want GIT to ignore some files in the Repo folder like log files. In this case we need to specify these files in .gitignore file. 
+```ruby
+touch .gitignore                          # create the file in the current local repo folder
+git config core.excludesFile .gitignore   # configure it
+echo cockpit.pro.user >> .gitignore       # write the file name which will be ignored by git into the .gitignore file
+git add .gitignore                        
+git commit -m "gitignore added"
+git push
+```
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

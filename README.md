@@ -157,7 +157,7 @@ touch .gitignore                          # create the file in the current local
 git config core.excludesFile .gitignore   # configure it
 echo cockpit.pro.user >> .gitignore       # write the file name which will be ignored by git into the .gitignore file
 git add .gitignore                        
-git commit -m "gitignore added"
+git commit -m "start ignoring cockpit.pro.user"
 git push
 ```
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

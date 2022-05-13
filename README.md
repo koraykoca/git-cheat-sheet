@@ -40,9 +40,10 @@ When we want to discard changes and undo the add command, we can use _**git rese
 git commit name_of_the_file -m "commit_message"
 ```
 
-GIT can ask about our identity after executing this command. In this case we will set our e-mail address as:
+GIT can ask about our identity after executing this command. In this case we will set our name and e-mail address as:
 
 ```ruby
+git config user.name "user_name"
 git config user.email "email_address"
 ```
 

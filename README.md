@@ -16,7 +16,11 @@ git config --global user.email "my email"
 To start a repository in the current directory, use _**git init**_. Or clone the repository on your local machine. If we work on someone else's project, we need to fork the project first. Then we will use _**git clone**_ command as following:
 
 ```ruby
-git clone repository_url
+git clone <repository_url>
+```
+If we want to clone a branch:
+```ruby
+git clone --single-branch --branch <branchname> <repository_url>
 ```
 
 With this code, you will clone whole project with all branches. After cloning the repository, we can see them locally. Now we can make changes on them on our machine. After editing, we can send our local changes to the online repository so that our teammates will be able to see our changes. For this, we use _**git add**_ command. If we want to add all files we made changes on, then we can use _**git add --all**_ command. When we want to add only a specific file, we use _**git add name_of_the_file**_:

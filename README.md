@@ -105,7 +105,7 @@ git push origin --delete <branch_name>
 
 When we want to clone a specific branch from already cloned repo:
 ```ruby
-git fetch <repo_url> <remote_branch_name>:<give_a_name_for_local_branch>
+git fetch <repo_url or remote_name> <remote_branch_name>:<give_a_name_for_local_branch>
 # Example: git fetch https://github.com/qgis/QGIS.git release-3_24:release-3_24
 ```
 

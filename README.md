@@ -153,6 +153,11 @@ git fetch origin                          # to retrieve all branches and updates
 git fetch origin --prune                  # to connect to a shared remote repository remote and fetch all remote branch refs. It will then delete remote refs that are no longer in use on the remote repository
 ```
 
+To apply changes from a specific commit, use __*git cherry-pick*__ command:
+```ruby
+git cherry-pick <commit SHA>
+```
+
 ### Import Repo from Github to Gitlab
 ```ruby
 git remote add gitlab gitlab_repo_url     # Add the new gitlab remote to your existing repository

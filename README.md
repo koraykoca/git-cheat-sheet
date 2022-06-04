@@ -36,7 +36,10 @@ git add -p
 # we can add all, but exclude some files
 git add .
 git reset -- <excluded_file>
+# or remove back an added file
+git rm --cached <file_name>
 ```
+
 
 When we want to discard changes and undo the add command, we can use _**git reset file_name**_ command. We check always the status of our GIT using _**git status**_ command. This command shows us what branch we're on, what files are in the working or staging directory, and any other important information. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
 

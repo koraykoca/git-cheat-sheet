@@ -185,4 +185,11 @@ git add .gitignore
 git commit -m "start ignoring cockpit.pro.user"
 git push
 ```
+
+### Delete last commit
+```ruby
+git reset --hard HEAD~1
+git push -f origin <branch_name>
+```
+
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

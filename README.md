@@ -62,15 +62,6 @@ After that we can send our changes without problem with _**git push**_ command. 
 ```ruby
 git push
 ```
-
-_**Pull request**_ is created to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
-
-- There is an accessible Repository,
-- You can fork it,
-- You can clone the forked repository and make changes in your own fork,
-- you can push your changes to your own fork,
-- or you can make a pull request from your own fork and the owner of the upstream repository, which you cannot push directly to, will decide whether or not to merge your pull request.
-
 ## GIT Branching
 
 Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command. This command switches to the specified branch and updates the working directory.
@@ -111,6 +102,21 @@ When we want to clone a specific branch from already cloned repo:
 git fetch <repo_url or remote_name> <remote_branch_name>:<give_a_name_for_local_branch>
 # Example: git fetch https://github.com/qgis/QGIS.git release-3_24:release-3_24
 ```
+
+_**Pull request**_ is created to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
+
+- There is an accessible Repository,
+- You can fork it,
+- You can clone the forked repository and make changes in your own fork,
+- you can push your changes to your own fork,
+- or you can make a pull request from your own fork and the owner of the upstream repository, which you cannot push directly to, will decide whether or not to merge your pull request.
+
+To test the pull request, we can do as following:
+```ruby
+git fetch origin pull/<Pull ID>/head:<BRANCHNAME>  # BRANCHNAME: give a name for branch will be being created.
+git checkout BRANCHNAME  # test the code in this branch
+```
+After testing, you can checkout to the main/master branch.
 
 ### Git stash
 git stash command is great when we are not ready to commit the changes, but we want to switch branches or we want to rewert back temporarily to where you started. We can do a stash on these changes and git will save them in a temporary space. 

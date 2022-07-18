@@ -1,12 +1,12 @@
 # GIT - a Version Control System
 
-GIT is a Version Control System (VCS) which is widely used in practice. It makes easier to work on a project as a team. You can track changes on the code and communicate with your team mates through the code remotely.
+Git is a Version Control System (VCS) which is widely used in practice. It makes easier to work on a project as a team. You can track changes on the code and communicate with your team mates through the code remotely.
 
 In the Git version control system, every state is called a commit, which describes the changes from the previous version. Every file in the project, together with the history, is stored in a repository (a directory). You can manage Git repositories either from your IDE, or from the command line.
 
 You can create your own repository or you can fork a repository which is already created by someone else. I will explain some important GIT commands in this blog.
 
-## Basic GIT Commands
+## Basic Git Commands
 
 Before you are able to create Git commits, you need to tell Git who you are. Run in your terminal:
 
@@ -47,7 +47,7 @@ When we want to discard changes and undo the add command, we can use _**git rese
 git commit name_of_the_file -m "commit_message"
 ```
 
-GIT can ask about our identity after executing this command. In this case we will set our name and e-mail address as:
+Git can ask about our identity after executing this command. In this case we will set our name and e-mail address as:
 
 ```ruby
 git config user.name "user_name"
@@ -81,7 +81,7 @@ git push -f origin <branch_name>
 - Put a push rule for commit messages in Gitlab
 Menu > Projects > Settings > Repository > Push Rules
 
-## GIT Branching
+## Git Branching
 
 Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command. This command switches to the specified branch and updates the working directory.
 
@@ -215,6 +215,15 @@ echo cockpit.pro.user >> .gitignore       # write the file name which will be ig
 git add .gitignore                        
 git commit -m "start ignoring cockpit.pro.user"
 git push
+```
+
+### Removing of untracked files
+```ruby
+git clean -n -d  # Print out the list of files and directories which will be removed (dry run)
+git clean -f     # Delete the files from the repository
+git clean -f -d  # Delete the directories from the repository
+git clean -f -X  # Remove ignored files
+git clean -f -x  # Remove ignored files and non-ignored files
 ```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

@@ -54,14 +54,33 @@ git config user.name "user_name"
 git config user.email "email_address"
 ```
 
-Then we need to commit the files again. Sometimes after committing, we may want to rewrite the very last commit. In this case we can use _**git commit --amend -m "new_commit_message"**_. 
-
 Now we are ready to send our changes to the online repository, so that they can be shared with the rest of the world. However, when somebody else on our team made some changes in the repository which we don't have them on our local repository, we need to _**pull**_ these remote changes because there is some kind of conflicts between what we have locally and what is living online. In this case _**git pull**_ command takes recent changes that are living on the remote repository and get them to the local repository.
 After that we can send our changes without problem with _**git push**_ command. This command uploads all local branch commits to the remote. We can check where our remote target is with _**git remote -v**_ command.
 
 ```ruby
 git push
 ```
+
+### Operations with commits
+- Change last commit message
+```ruby
+git commit --amend -m "new commit message"
+```
+- Change previous commit messages
+```ruby
+git rebase -i <A-commit-hash>  # find commit hash with git log command
+# write edit in front of the commit that you want to change 
+# change the message with git commit --amend
+git rebase --continue
+```
+- Delete last commit
+```ruby
+git reset --hard HEAD~1
+git push -f origin <branch_name>
+```
+- Put a push rule for commit messages in Gitlab
+Menu > Projects > Settings > Repository > Push Rules
+
 ## GIT Branching
 
 Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command. This command switches to the specified branch and updates the working directory.
@@ -167,20 +186,26 @@ To apply changes from a specific commit, use __*git cherry-pick*__ command:
 git cherry-pick <commit SHA>
 ```
 
-### Import Repo from Github to Gitlab
+### Working with two hosting services like Github and Gitlab:
+push a project from GitHub to GitLab:
 ```ruby
 git remote add gitlab gitlab_repo_url     # Add the new gitlab remote to your existing repository
 git push gitlab                           # then push
 ```
-
+push a project from GitLab to GitHub:
+```ruby
+git remote add github <github_repo_url>
+git push --mirror github
+```
 to merge branches from two projects
 ```ruby
 git merge branch_name --allow-unrelated-histories
 ```
-### push to both Github and Gitlab 
+- push to both Github and Gitlab 
 ```ruby
 git remote set-url –-add origin <github_url>
 ```
+
 ### .gitignore file
 Sometimes we want GIT to ignore some files in the Repo folder like log files. In this case we need to specify these files in .gitignore file. 
 ```ruby
@@ -190,12 +215,6 @@ echo cockpit.pro.user >> .gitignore       # write the file name which will be ig
 git add .gitignore                        
 git commit -m "start ignoring cockpit.pro.user"
 git push
-```
-
-### Delete last commit
-```ruby
-git reset --hard HEAD~1
-git push -f origin <branch_name>
 ```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

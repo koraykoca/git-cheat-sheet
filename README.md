@@ -187,17 +187,17 @@ git cherry-pick <commit SHA>
 ```
 
 ### Working with two hosting services like Github and Gitlab:
-push a project from GitHub to GitLab:
+- push a project from GitHub to GitLab:
 ```ruby
 git remote add gitlab gitlab_repo_url     # Add the new gitlab remote to your existing repository
 git push gitlab                           # then push
 ```
-push a project from GitLab to GitHub:
+- push a project from GitLab to GitHub:
 ```ruby
 git remote add github <github_repo_url>
 git push --mirror github
 ```
-to merge branches from two projects
+- to merge branches from two projects
 ```ruby
 git merge branch_name --allow-unrelated-histories
 ```

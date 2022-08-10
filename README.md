@@ -225,5 +225,20 @@ git clean -f -d  # Delete the directories from the repository
 git clean -f -X  # Remove ignored files
 git clean -f -x  # Remove ignored files and non-ignored files
 ```
+### Git Tags
+
+Tags help putting reference to different commits that are important to be noticed. For example, tagging a commit with the release version 3.0 means that the commit was the final commit before the launch of the 3.0 version of the software.
+
+```ruby
+git tag   # to see the tags in the repo
+git tag <tag_name> <branch_name>  # add tag to the last commit (the commit to which the HEAD points) on the branch
+git tag -a <tag_name> -m "<Message_for_commit>" <commit_hash_code>  # add tag to a specific commit on the branch
+git push --tags  # push the tags to the remote
+git tag -f <tag_name_to_update>  # update a tag to the last commit
+git tag -f <tag_name_to_update> <hash_code_new_commit>  # update a tag to a specific commit
+git push --force origin <tag_name>  # push the updates to the remote repo
+git tag -d <tag_name>  # delete a tag
+git push origin :<tag_name>  # delete the tag in the remote repo
+```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

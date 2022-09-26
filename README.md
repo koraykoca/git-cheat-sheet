@@ -62,6 +62,12 @@ git push
 ```
 
 ### Operations with commits
+- Add a new code change to previous commit
+```ruby
+git add <modified_file>
+git commit --amend  # if you want to change the commit message
+git commit --amend --no-edit  # if you don't want to change the commit message
+```
 - Change last commit message
 ```ruby
 git commit --amend -m "new commit message"

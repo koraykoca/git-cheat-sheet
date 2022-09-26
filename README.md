@@ -67,6 +67,8 @@ git push
 git add <modified_file>
 git commit --amend  # if you want to change the commit message
 git commit --amend --no-edit  # if you don't want to change the commit message
+git push -f origin >branch_name>  # if you pushed the commit to remote
+git push  # if you didn't push the commit to remote
 ```
 - Change last commit message
 ```ruby

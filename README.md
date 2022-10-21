@@ -172,6 +172,11 @@ git pull        # do whatever you want, for example pull
 git stash pop   # get the latest item you put aside
 ```
 
+When you apply a stash (or popping out commits using the git stash pop command), merge conflicts may occur. You can solve them or abort the whole git stash process. To abort the process, you can run: 
+```bash
+git reset --merge
+```
+
 ### Updating Forked Repository 
 
 When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them. First of all, we need to go to the directory where we cloned the repository. We set the original repository as our upstream repository and we fetch the upstream from the original repository. After that, we will create and checkout to the branch which was newly added to the original repository (to create a branch in the same repo, _**git branch branch_name**_ or, more commonly _**git checkout -b branch_name**_, the latter creates the branch then checks it out so we can immediately start working on it) and pull the changes into our local repository then push to the forked repository. The process is as following:

@@ -10,17 +10,25 @@ You can create your own repository or you can fork a repository which is already
 
 Before you are able to create Git commits, you need to tell Git who you are. Run in your terminal:
 
-git config --global user.name "My Name"
-git config --global user.email "my email"
+```bash
+git config --global user.name "your_name"
+git config --global user.email "your_email"
+```
 
-To start a repository in the current directory, use _**git init**_. Or clone the repository on your local machine. To be able to clone with SSH, add SSH Key to GitHub/GitLab profile. Process:
+To start a repository in the current directory, use _**git init**_. Then add the url of the remote repository:
+```bash
+git init
+git remote add origin <repo_url>
+git fetch
+```
+
+Or clone the repository on your local machine. To be able to clone with SSH, add SSH Key to GitHub/GitLab profile. Process:
 ```bash
 ssh-keygen  # Copy the value of the public SSH key (id_rsa.pub) to your GitHub/GitLab account
 git clone <SSH-URL-for-the-repository>
 # if permission denied error occurs
 ssh-add <path-to-id_rsa>
 ```
-
 If we work on someone else's project, we need to fork the project first. Then we will use _**git clone**_ command as following:
 
 ```bash

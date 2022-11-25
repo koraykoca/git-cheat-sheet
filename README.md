@@ -39,28 +39,34 @@ If we want to clone a branch:
 git clone --single-branch --branch <branchname> <repository_url>
 ```
 
-With this code, you will clone whole project with all branches. After cloning the repository, we can see them locally. Now we can make changes on them on our machine. After editing, we can send our local changes to the online repository so that our teammates will be able to see our changes. For this, we use _**git add**_ command. If we want to add all files we made changes on, then we can use _**git add --all**_ command. When we want to add only a specific file, we use _**git add name_of_the_file**_:
+With this code, you will clone whole project with all branches. After cloning the repository, we can see them locally. Now we can make changes on them on our machine. After editing, we can send our local changes to the online repository so that our teammates will be able to see our changes. For this, we use _**git add**_ command. If we want to add all files we made changes on, then we can use _**git add --all**_ or _**git add .**_ command. When we want to add only a specific file, we use _**git add <name_of_the_file>**_:
 
 ```bash
-git add --all
+git add --all  # or git add .
 # or we can specify the file
 git add file1_name
 # or we can specify many files
 git add file1_name file2_name file3_name 
-# we can decide which changes to include in the current commit
+# or we can exclude new files and just update all tracked files
+git add -u  
+# or we can decide which changes to include in the current commit
 git add -p
-# we can add all, but exclude some files
+# or we can add all, but exclude some files
 git add .
 git reset -- <excluded_file>
 # or remove back an added file
 git rm --cached <file_name>
 ```
 
-
 When we want to discard changes and undo the add command, we can use _**git reset file_name**_ command. We check always the status of our GIT using _**git status**_ command. This command shows us what branch we're on, what files are in the working or staging directory, and any other important information. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
 
 ```bash
 git commit name_of_the_file -m "commit_message"
+```
+
+If you issue a git commit without specifying a commit message, the default Git editor (Vim) will pop up. However, we can make e.g. Notepad++ as Git’s editor
+```bash
+git config --global core.editor "'<give_path_to_notepad++.exe>' -multiInst -notabbar -nosession -noPlugin"
 ```
 
 Git can ask about our identity after executing this command. In this case we will set our name and e-mail address as:
@@ -165,6 +171,7 @@ After testing, you can checkout to the main/master branch.
 git stash command is great when we are not ready to commit the changes, but we want to switch branches or we want to rewert back temporarily to where you started. We can do a stash on these changes and git will save them in a temporary space. 
 ```bash
 git stash save "a_message"  # create a stash
+git stash push -m "a_message" <file_path>  # to save a specific path to the stash
 git stash list              # see the stashes 
 git stash apply stash_id    # apply the changes in the stash
 git checkout -- .           # to reset changes in the file

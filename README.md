@@ -244,6 +244,9 @@ git merge branch_name --allow-unrelated-histories
 git remote set-url –-add origin <github_url>
 ```
 
+- You can turn a folder within a Git repository into a brand new repository:
+https://docs.github.com/en/get-started/using-git/splitting-a-subfolder-out-into-a-new-repository
+
 ### .gitignore file
 Sometimes we want GIT to ignore some files in the Repo folder like log files. In this case we need to specify these files in .gitignore file. 
 ```bash

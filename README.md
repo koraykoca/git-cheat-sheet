@@ -126,6 +126,11 @@ It's typical to create a new branch and switch to that new branch at the same ti
 git checkout -b branch_name
 ```
 
+You can change the name of the current branch with this command:
+```bash
+git branch -m <new_name>
+```
+
 When we want to push something that is in our new branch, we need to first switch to the main branch. Then, we use _**git merge**_ command to merge our new branch into the main branch. After merging, we will be done with the new branch which we created and can delete it with _**git branch -d branch_name**_. If we don't want to delete and keep the branch also on the remote repository, we use 
 ```bash
 git push --set-upstream origin <branch_name>

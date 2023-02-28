@@ -157,6 +157,17 @@ git fetch <repo_url or remote_name> <remote_branch_name>:<give_a_name_for_local_
 # Example: git fetch https://github.com/qgis/QGIS.git release-3_24:release-3_24
 ```
 
+## Git Rebase
+Git rebase rewrites commits from one branch onto another branch. It is a useful alternative to merging and it gives us a cleaner linear history. Rebase means we are making the last commit of the target branch (e.g. main branch) base commit of our branch, and then we will add/move our commits onto this base commit. 
+
+```bash
+# in feature branch
+git rebase main
+```
+
+Cleaner history helps us troubleshoot bugs faster. Therefore, before making a pull request from our branch into main/master branch, it can be better to use git rebase instead of git merge and then create a pull request. However, if you have commits which other team members pulled them down and worked on them, then rewriting those commits and pushing them again will be not a good idea, because other team members will have to re-merge their work and things will get messy when you try to pull their work back into yours. 
+
+
 _**Pull request**_ is created to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
 
 - There is an accessible Repository,

@@ -105,7 +105,8 @@ git rebase --continue
 ```
 - Delete last commit
 ```bash
-git reset --hard HEAD~1
+git reset HEAD@{1}  # it will remove the changes in your staged files
+git reset --hard HEAD~1  # it will remove all changes in your unstaged and staged files
 git push -f origin <branch_name>
 ```
 - Put a push rule for commit messages in Gitlab

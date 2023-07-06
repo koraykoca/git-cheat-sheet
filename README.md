@@ -103,7 +103,12 @@ git rebase -i <A-commit-hash>  # find commit hash with git log command
 # change the message with git commit --amend
 git rebase --continue
 ```
-- Delete last commit
+- Undo the last commit but keep changes
+After running the following command, the changes will be as not-staged changes in the working directory
+ ```bash
+  git reset --soft HEAD~1  # it will return to the "1" before the current revision
+```
+- Undo the last commit and reset changes
 ```bash
 git reset HEAD@{1}  # it will remove the changes in your staged files
 git reset --hard HEAD~1  # it will remove all changes in your unstaged and staged files

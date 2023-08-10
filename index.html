@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta name="google-site-verification" content="pJTDO48U2O_cJpKPJx9J9aLOh4wKjZ-AJln16oDHkl8" />
+    <meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>GIT - a Version Control System | git-cheat-sheet</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="GIT - a Version Control System" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="mostly used Git commands" />
+<meta property="og:description" content="mostly used Git commands" />
+<link rel="canonical" href="https://koraykoca.github.io/git-cheat-sheet/" />
+<meta property="og:url" content="https://koraykoca.github.io/git-cheat-sheet/" />
+<meta property="og:site_name" content="git-cheat-sheet" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="GIT - a Version Control System" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"mostly used Git commands","headline":"GIT - a Version Control System","name":"git-cheat-sheet","url":"https://koraykoca.github.io/git-cheat-sheet/"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/git-cheat-sheet/assets/css/style.css?v=b934ba41a3067db1ac7ff9cfe58c578041441b46">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/git-cheat-sheet/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <a id="skip-to-content" href="#content">Skip to the content.</a>
+
+    <header class="page-header" role="banner">
+      <h1 class="project-name">GIT - a Version Control System</h1>
+      <h2 class="project-tagline">mostly used Git commands</h2>
+      
+        <a href="https://github.com/koraykoca/git-cheat-sheet" class="btn">View on GitHub</a>
+      
+      
+    </header>
+
+    <main id="content" class="main-content" role="main">
+      <h1 id="git---a-version-control-system">GIT - a Version Control System</h1>
+
+<p>Git is a Version Control System (VCS) which is widely used in practice. It makes easier to work on a project as a team. You can track changes on the code and communicate with your team mates through the code remotely.</p>
+
+<p>In the Git version control system, every state is called a commit, which describes the changes from the previous version. Every file in the project, together with the history, is stored in a repository (a directory). You can manage Git repositories either from your IDE, or from the command line.</p>
+
+<p>You can create your own repository or you can fork a repository which is already created by someone else. I will explain some important GIT commands in this blog.</p>
+
+<h2 id="basic-git-commands">Basic Git Commands</h2>
+
+<p>Before you are able to create Git commits, you need to tell Git who you are. Run in your terminal:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> user.name <span class="s2">"your_name"</span>
+git config <span class="nt">--global</span> user.email <span class="s2">"your_email"</span>
+</code></pre></div></div>
+
+<p>To start a repository in the current directory, use <em><strong>git init</strong></em>. Then add the url of the remote repository:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init
+git remote add origin &lt;repo_url&gt;
+git fetch
+</code></pre></div></div>
+
+<p>Or clone the repository on your local machine. To be able to clone with SSH, add SSH Key to GitHub/GitLab profile. Process:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-keygen  <span class="c"># Copy the value of the public SSH key (id_rsa.pub) to your GitHub/GitLab account</span>
+git clone &lt;SSH-URL-for-the-repository&gt;
+<span class="c"># if permission denied error occurs</span>
+ssh-add &lt;path-to-id_rsa&gt;
+</code></pre></div></div>
+<p>If we work on someone else’s project, we need to fork the project first. Then we will use <em><strong>git clone</strong></em> command as following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone &lt;repository_url&gt;
+</code></pre></div></div>
+<p>If we want to clone a branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone <span class="nt">--single-branch</span> <span class="nt">--branch</span> &lt;branchname&gt; &lt;repository_url&gt;
+</code></pre></div></div>
+
+<p>With this code, you will clone whole project with all branches. After cloning the repository, we can see them locally. Now we can make changes on them on our machine. After editing, we can send our local changes to the online repository so that our teammates will be able to see our changes. For this, we use <em><strong>git add</strong></em> command. If we want to add all files we made changes on, then we can use <em><strong>git add –all</strong></em> or <em><strong>git add .</strong></em> command. When we want to add only a specific file, we use _**git add <name_of_the_file>**_:</name_of_the_file></p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nt">--all</span>  <span class="c"># or git add .</span>
+<span class="c"># or we can specify the file</span>
+git add file1_name
+<span class="c"># or we can specify many files</span>
+git add file1_name file2_name file3_name 
+<span class="c"># or we can exclude new files and just update all tracked files</span>
+git add <span class="nt">-u</span>  
+<span class="c"># or we can decide which changes to include in the current commit</span>
+git add <span class="nt">-p</span>
+<span class="c"># or we can add all, but exclude some files</span>
+git add <span class="nb">.</span>
+git reset <span class="nt">--</span> &lt;excluded_file&gt;
+<span class="c"># or remove back an added file</span>
+git <span class="nb">rm</span> <span class="nt">--cached</span> &lt;file_name&gt;
+</code></pre></div></div>
+
+<p>When we want to discard changes and undo the add command, we can use <em><strong>git reset file_name</strong></em> command. We check always the status of our GIT using <em><strong>git status</strong></em> command. This command shows us what branch we’re on, what files are in the working or staging directory, and any other important information. We will save our changes to the local repository with <em><strong>git commit</strong></em> command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit name_of_the_file <span class="nt">-m</span> <span class="s2">"commit_message"</span>
+</code></pre></div></div>
+
+<p>If you issue a git commit without specifying a commit message, the default Git editor (Vim) will pop up. However, we can make e.g. Notepad++ as Git’s editor</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config <span class="nt">--global</span> core.editor <span class="s2">"'&lt;give_path_to_notepad++.exe&gt;' -multiInst -notabbar -nosession -noPlugin"</span>
+</code></pre></div></div>
+
+<p>Git can ask about our identity after executing this command. In this case we will set our name and e-mail address as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git config user.name <span class="s2">"user_name"</span>
+git config user.email <span class="s2">"email_address"</span>
+</code></pre></div></div>
+
+<p>Now we are ready to send our changes to the online repository, so that they can be shared with the rest of the world. However, when somebody else on our team made some changes in the repository which we don’t have them on our local repository, we need to <em><strong>pull</strong></em> these remote changes because there is some kind of conflicts between what we have locally and what is living online. In this case <em><strong>git pull</strong></em> command takes recent changes that are living on the remote repository and get them to the local repository.
+After that we can send our changes without problem with <em><strong>git push</strong></em> command. This command uploads all local branch commits to the remote. We can check where our remote target is with <em><strong>git remote -v</strong></em> command.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push
+</code></pre></div></div>
+
+<h3 id="operations-with-commits">Operations with commits</h3>
+<ul>
+  <li>Add a new code change to previous commit
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add &lt;modified_file&gt;
+git commit <span class="nt">--amend</span>  <span class="c"># if you want to change the commit message</span>
+git commit <span class="nt">--amend</span> <span class="nt">--no-edit</span>  <span class="c"># if you don't want to change the commit message</span>
+git push <span class="nt">-f</span> origin &lt;branch_name&gt;  <span class="c"># if you pushed the commit to remote</span>
+git push  <span class="c"># if you didn't push the commit to remote</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Change last commit message
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit <span class="nt">--amend</span> <span class="nt">-m</span> <span class="s2">"new commit message"</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Change previous commit messages
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase <span class="nt">-i</span> &lt;A-commit-hash&gt;  <span class="c"># find commit hash with git log command</span>
+<span class="c"># write edit in front of the commit that you want to change </span>
+<span class="c"># change the message with git commit --amend</span>
+git rebase <span class="nt">--continue</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Undo the last commit but keep changes
+After running the following command, the changes will be as not-staged changes in the working directory
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--soft</span> HEAD~1  <span class="c"># it will return to the "1" before the current revision</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Undo the last commit and reset changes
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset HEAD@<span class="o">{</span>1<span class="o">}</span>  <span class="c"># it will remove the changes in your staged files</span>
+git reset <span class="nt">--hard</span> HEAD~1  <span class="c"># it will remove all changes in your unstaged and staged files</span>
+git push <span class="nt">-f</span> origin &lt;branch_name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Put a push rule for commit messages in Gitlab
+Menu &gt; Projects &gt; Settings &gt; Repository &gt; Push Rules</li>
+</ul>
+
+<h2 id="git-branching">Git Branching</h2>
+
+<p>Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use <em><strong>git branch</strong></em> command. To switch to an existing branch, we use <em><strong>git checkout</strong></em> command. This command switches to the specified branch and updates the working directory.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch branch_name
+git checkout branch_name
+</code></pre></div></div>
+
+<p>It’s typical to create a new branch and switch to that new branch at the same time. This can be done in one operation with</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> branch_name
+</code></pre></div></div>
+
+<p>You can change the name of the current branch with this command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-m</span> &lt;new_name&gt;
+</code></pre></div></div>
+
+<p>When we want to push something that is in our new branch, we need to first switch to the main branch. Then, we use <em><strong>git merge</strong></em> command to merge our new branch into the main branch. After merging, we will be done with the new branch which we created and can delete it with <em><strong>git branch -d branch_name</strong></em>. If we don’t want to delete and keep the branch also on the remote repository, we use</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">--set-upstream</span> origin &lt;branch_name&gt;
+</code></pre></div></div>
+<p>But generally, the whole process will be like as the following:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> &lt;branch_name&gt;  <span class="c"># branch creating and switching to it</span>
+<span class="c"># Some changes on the files</span>
+git add &lt;file_name&gt;            <span class="c"># changes are staged in order to be committed</span>
+git commit <span class="nt">-m</span> <span class="s2">"some_message"</span>   <span class="c"># telling what you changed/did</span>
+git checkout main              <span class="c"># switching to the main branch</span>
+git merge &lt;branch_name&gt;        <span class="c"># get changes back to the main branch</span>
+git push                       <span class="c"># changes pushed to the main branch</span>
+git branch <span class="nt">-d</span> &lt;branch_name&gt;    <span class="c"># deleting the new branch</span>
+</code></pre></div></div>
+<p>If we want to delete a remote branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push origin <span class="nt">--delete</span> &lt;branch_name&gt;
+</code></pre></div></div>
+
+<p>When we want to clone a specific branch from already cloned repo:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch &lt;repo_url or remote_name&gt; &lt;remote_branch_name&gt;:&lt;give_a_name_for_local_branch&gt;
+<span class="c"># Example: git fetch https://github.com/qgis/QGIS.git release-3_24:release-3_24</span>
+</code></pre></div></div>
+
+<h2 id="git-rebase">Git Rebase</h2>
+<p>Git rebase rewrites commits from one branch onto another branch. It is a useful alternative to merging and it gives us a cleaner linear history. Rebase means we are making the last commit of the target branch (e.g. main branch) base commit of our branch, and then we will add/move our commits onto this base commit.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># in feature branch</span>
+git rebase main
+</code></pre></div></div>
+
+<p>Cleaner history helps us troubleshoot bugs faster. Therefore, before making a pull request from our branch into main/master branch, it can be better to use git rebase instead of git merge and then create a pull request. However, if you have commits which other team members pulled them down and worked on them, then rewriting those commits and pushing them again will be not a good idea, because other team members will have to re-merge their work and things will get messy when you try to pull their work back into yours.</p>
+
+<p><em><strong>Pull request</strong></em> is created to ask owner of the project to pull your changes. You are asking the main/master repository’s owner to pull files from your repository. This process is like following:</p>
+
+<ul>
+  <li>There is an accessible Repository,</li>
+  <li>You can fork it,</li>
+  <li>You can clone the forked repository and make changes in your own fork,</li>
+  <li>you can push your changes to your own fork,</li>
+  <li>or you can make a pull request from your own fork and the owner of the upstream repository, which you cannot push directly to, will decide whether or not to merge your pull request.</li>
+</ul>
+
+<p>To test the pull request, we can do as following:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git fetch origin pull/&lt;Pull ID&gt;/head:&lt;BRANCHNAME&gt;  <span class="c"># BRANCHNAME: give a name for branch will be being created.</span>
+git checkout BRANCHNAME  <span class="c"># test the code in this branch</span>
+</code></pre></div></div>
+<p>After testing, you can checkout to the main/master branch.</p>
+
+<h3 id="git-stash">Git stash</h3>
+<p>git stash command is great when we are not ready to commit the changes, but we want to switch branches or we want to rewert back temporarily to where you started. We can do a stash on these changes and git will save them in a temporary space.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash save <span class="s2">"a_message"</span>  <span class="c"># create a stash</span>
+git stash push <span class="nt">-m</span> <span class="s2">"a_message"</span> &lt;file_path&gt;  <span class="c"># to save a specific path to the stash</span>
+git stash list              <span class="c"># see the stashes </span>
+git stash apply stash_id    <span class="c"># apply the changes in the stash</span>
+git checkout <span class="nt">--</span> <span class="nb">.</span>           <span class="c"># to reset changes in the file</span>
+git stash pop               <span class="c"># take the first stash in the list , apply those changes and delete/drop the stash </span>
+git stash drop stas_id      <span class="c"># delete the stash</span>
+git stash clear             <span class="c"># delete all stashes</span>
+</code></pre></div></div>
+
+<p>We need to commit our changes then pull the remote repo then we push our changes. A good workaround for this is following:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git stash       <span class="c"># put aside all the uncommitted changes you have </span>
+git pull        <span class="c"># do whatever you want, for example pull</span>
+git stash pop   <span class="c"># get the latest item you put aside</span>
+</code></pre></div></div>
+
+<p>When you apply a stash (or popping out commits using the git stash pop command), merge conflicts may occur. You can solve them or abort the whole git stash process. To abort the process, you can run:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset <span class="nt">--merge</span>
+</code></pre></div></div>
+
+<h3 id="updating-forked-repository">Updating Forked Repository</h3>
+
+<p>When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them. First of all, we need to go to the directory where we cloned the repository. We set the original repository as our upstream repository and we fetch the upstream from the original repository. After that, we will create and checkout to the branch which was newly added to the original repository (to create a branch in the same repo, <em><strong>git branch branch_name</strong></em> or, more commonly <em><strong>git checkout -b branch_name</strong></em>, the latter creates the branch then checks it out so we can immediately start working on it) and pull the changes into our local repository then push to the forked repository. The process is as following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add upstream original_repo_url  <span class="c"># upstream points the original repo</span>
+git fetch upstream   <span class="c"># fetch tells git “go get this remote data, and shove it into a “remote” branch in my repo. </span>
+git checkout <span class="nt">-b</span> original_repo_branch_to_transfer
+git pull upstream original_repo_branch_to_transfer  <span class="c"># pull says, “fetch it, and also merge it with my current branch.</span>
+git push <span class="nt">--set-upstream</span> origin original_repo_branch_to_transfer
+</code></pre></div></div>
+
+<h3 id="operations-with-branches">Operations with Branches</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git branch <span class="nt">-a</span>                             <span class="c"># to see branches</span>
+git remote set-head origin <span class="nt">-a</span>             <span class="c"># to make current checkouted branch origin</span>
+git branch <span class="nt">-m</span> &lt;oldname&gt; &lt;newname&gt;         <span class="c"># to change the name of a branch</span>
+git branch <span class="nt">-u</span> origin/&lt;BRANCH&gt; &lt;BRANCH&gt;    <span class="c"># to set up a branch to track a remote branch</span>
+git branch <span class="nt">-d</span> branch_name                 <span class="c"># to delete branch locally</span>
+git push origin <span class="nt">--delete</span> branch_name      <span class="c"># to delete branch remotely</span>
+git fetch origin                          <span class="c"># to retrieve all branches and updates</span>
+git fetch origin <span class="nt">--prune</span>                  <span class="c"># to connect to a shared remote repository remote and fetch all remote branch refs. It will then delete remote refs that are no longer in use on the remote repository</span>
+</code></pre></div></div>
+
+<p>Use <strong><em>git cherry-pick</em></strong> command to apply changes from a specific commit, or to apply a commit from a branch:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># merge a commit from another branch to master</span>
+git checkout master
+git cherry-pick &lt;commit SHA&gt;  
+</code></pre></div></div>
+
+<h3 id="working-with-two-hosting-services-like-github-and-gitlab">Working with two hosting services like Github and Gitlab:</h3>
+<ul>
+  <li>push a project from GitHub to GitLab:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add gitlab gitlab_repo_url     <span class="c"># Add the new gitlab remote to your existing repository</span>
+git push gitlab                           <span class="c"># then push</span>
+</code></pre></div>    </div>
+  </li>
+  <li>push a project from GitLab to GitHub:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote add github &lt;github_repo_url&gt;
+git push <span class="nt">--mirror</span> github
+</code></pre></div>    </div>
+  </li>
+  <li>to merge branches from two projects
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git merge branch_name <span class="nt">--allow-unrelated-histories</span>
+</code></pre></div>    </div>
+  </li>
+  <li>push to both Github and Gitlab
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote set-url –-add origin &lt;github_url&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>You can turn a folder within a Git repository into a brand new repository:
+https://docs.github.com/en/get-started/using-git/splitting-a-subfolder-out-into-a-new-repository</li>
+</ul>
+
+<h3 id="gitignore-file">.gitignore file</h3>
+<p>Sometimes we want GIT to ignore some files in the Repo folder like log files. In this case we need to specify these files in .gitignore file.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch</span> .gitignore                          <span class="c"># create the file in the current local repo folder</span>
+git config core.excludesFile .gitignore   <span class="c"># configure it</span>
+<span class="nb">echo </span>cockpit.pro.user <span class="o">&gt;&gt;</span> .gitignore       <span class="c"># write the file name which will be ignored by git into the .gitignore file</span>
+git add .gitignore                        
+git commit <span class="nt">-m</span> <span class="s2">"start ignoring cockpit.pro.user"</span>
+git push
+</code></pre></div></div>
+
+<p>To exclude some files from gitignore, put ! before it:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/<span class="k">*</span>.txt
+<span class="o">!</span>requirements.txt
+</code></pre></div></div>
+
+<h3 id="removing-of-untracked-files">Removing of untracked files</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clean <span class="nt">-n</span> <span class="nt">-d</span>  <span class="c"># Print out the list of files and directories which will be removed (dry run)</span>
+git clean <span class="nt">-f</span>     <span class="c"># Delete the files from the repository</span>
+git clean <span class="nt">-f</span> <span class="nt">-d</span>  <span class="c"># Delete the directories from the repository</span>
+git clean <span class="nt">-f</span> <span class="nt">-X</span>  <span class="c"># Remove ignored files</span>
+git clean <span class="nt">-f</span> <span class="nt">-x</span>  <span class="c"># Remove ignored files and non-ignored files</span>
+</code></pre></div></div>
+<h3 id="git-tags">Git Tags</h3>
+
+<p>Tags help putting reference to different commits that are important to be noticed. For example, tagging a commit with the release version 3.0 means that the commit was the final commit before the launch of the 3.0 version of the software.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git tag   <span class="c"># to see the tags in the repo</span>
+git tag &lt;tag_name&gt; &lt;branch_name&gt;  <span class="c"># add tag to the last commit (the commit to which the HEAD points) on the branch</span>
+git tag <span class="nt">-a</span> &lt;tag_name&gt; <span class="nt">-m</span> <span class="s2">"&lt;Message_for_commit&gt;"</span> &lt;commit_hash_code&gt;  <span class="c"># add tag to a specific commit on the branch</span>
+git push <span class="nt">--tags</span>  <span class="c"># push the tags to the remote</span>
+git tag <span class="nt">-f</span> &lt;tag_name_to_update&gt;  <span class="c"># update a tag to the last commit</span>
+git tag <span class="nt">-f</span> &lt;tag_name_to_update&gt; &lt;hash_code_new_commit&gt;  <span class="c"># update a tag to a specific commit</span>
+git push <span class="nt">--force</span> origin &lt;tag_name&gt;  <span class="c"># push the updates to the remote repo</span>
+git tag <span class="nt">-d</span> &lt;tag_name&gt;  <span class="c"># delete a tag</span>
+git push origin :&lt;tag_name&gt;  <span class="c"># delete the tag in the remote repo</span>
+</code></pre></div></div>
+
+<h4 id="reference-git-book">Reference: <a href="http://git-scm.com/book/en/v2">Git-Book</a></h4>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/koraykoca/git-cheat-sheet">git-cheat-sheet</a> is maintained by <a href="https://github.com/koraykoca">koraykoca</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>.</span>
+      </footer>
+    </main>
+  </body>
+</html>

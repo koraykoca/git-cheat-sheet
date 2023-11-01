@@ -163,6 +163,8 @@ git fetch <repo_url or remote_name> <remote_branch_name>:<give_a_name_for_local_
 # Example: git fetch https://github.com/qgis/QGIS.git release-3_24:release-3_24
 ```
 
+> git fetch command only downloads the data to your local repository — it doesn’t automatically merge changes with any of your work or modify what you’re currently working on. You have to merge/incorporate changes manually into your work when you’re ready.
+
 ## Git Rebase
 Git rebase rewrites commits from one branch onto another branch. It is a useful alternative to merging and it gives us a cleaner linear history. Rebase means we are making the last commit of the target branch (e.g. main branch) base commit of our branch, and then we will add/move our commits onto this base commit. 
 
@@ -172,6 +174,8 @@ git rebase main
 ```
 
 Cleaner history helps us troubleshoot bugs faster. Therefore, before making a pull request from our branch into main/master branch, it can be better to use git rebase instead of git merge and then create a pull request. However, if you have commits which other team members pulled them down and worked on them, then rewriting those commits and pushing them again will be not a good idea, because other team members will have to re-merge their work and things will get messy when you try to pull their work back into yours. 
+
+Git rebase is also useful when you solve conflicts in a PR. After solving the conflicts, you can force push and update your PR. 
 
 
 _**Pull request**_ is created to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
@@ -220,9 +224,9 @@ When there are changes or new branches in the main repository, we need to take t
 
 ```bash
 git remote add upstream original_repo_url  # upstream points the original repo
-git fetch upstream   # fetch tells git “go get this remote data, and shove it into a “remote” branch in my repo. 
+git fetch upstream   # fetch tells git: "download the data to the local repository , but don't automatically merge it"
 git checkout -b original_repo_branch_to_transfer
-git pull upstream original_repo_branch_to_transfer  # pull says, “fetch it, and also merge it with my current branch.
+git pull upstream original_repo_branch_to_transfer  # pull tells git: "fetch it, and also merge it with my current branch."
 git push --set-upstream origin original_repo_branch_to_transfer
 ```
 
@@ -308,6 +312,19 @@ git tag -f <tag_name_to_update> <hash_code_new_commit>  # update a tag to a spec
 git push --force origin <tag_name>  # push the updates to the remote repo
 git tag -d <tag_name>  # delete a tag
 git push origin :<tag_name>  # delete the tag in the remote repo
+```
+
+### Git Submodules
+We can have another repository within one repository. This is useful when you have dependencies to another projects in your project. You can have full access to the repository of the dependency in your project. Submodules are just references to certain commits. It's like having a symlink to another repository. You can access to a specific version of the dependency with commit hash. To update the references:
+```bash
+git submodule update
+```
+
+To apply a git command to all initialized submodules, use git submodule foreach:
+```bash
+git submodule foreach git checkout master
+git submodule foreach git status
+git submodule foreach git diff
 ```
 
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

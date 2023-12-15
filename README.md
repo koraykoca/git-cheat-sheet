@@ -327,7 +327,7 @@ git submodule foreach git status
 git submodule foreach git diff
 ```
 
-### Pathces
+### Patches
 When we want to fix an issue or make a refactoring, we can create a patch file and send it to the maintainer. The maintainer can examine and apply the changes in the patch file if it is beneficial. 
 ```bash
 git diff > <file_name>.patch  # Create a git patch

@@ -327,4 +327,19 @@ git submodule foreach git status
 git submodule foreach git diff
 ```
 
+### Pathces
+When we want to fix an issue or make a refactoring, we can create a patch file and send it to the maintainer. The maintainer can examine and apply the changes in the patch file if it is beneficial. 
+```bash
+git diff > <file_name>.patch  # Create a git patch
+git apply <file_name>.patch --stat  # List all files which will be changed
+git apply <file_name>.patch   # Apply the git patch
+git apply <file_name>.patch --whitespace=fix  # Fix trailing whitespaces while applying the patch
+```
+
+We can also exclude or include some files before applying the patch
+```bash
+git apply --exclude=<file_name.ext> <file_name>.patch
+git apply --include=<file_name.ext> <file_name>.patch 
+```
+
 #### Reference: [Git-Book](http://git-scm.com/book/en/v2)

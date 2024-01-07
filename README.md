@@ -105,13 +105,18 @@ git push -f origin <branch_name>  # if you pushed the commit to remote before
 ```bash
 git commit --amend -m "new commit message"
 ```
-- Change previous commit messages
+- Change or delete previous commit messages
 ```bash
 git rebase -i <a-commit-hash>  # find commit hash with git log command
 # write "edit" in front of the commit that you want to change 
 # change the message with git commit --amend
 git rebase --continue
+
+# Or
+git rebase -i HEAD~n  # start an interactive rebase for the last n commits
+# To remove a commit, delete the corresponding line. To edit a commit, replace the word pick with edit next to the commit you want to amend.
 ```
+
 - Undo the last commit but keep changes
   
 After running the following command, the changes will be not-staged changes in the working directory

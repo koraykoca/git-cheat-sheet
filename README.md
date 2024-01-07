@@ -130,11 +130,12 @@ git reset --hard HEAD~1  # it will remove all changes in your unstaged and stage
 git push -f origin <branch_name>
 ```
 
-Use __*git cherry-pick*__ command to apply changes from a specific commit, or to apply a commit from a branch: 
+- `git cherry-pick`: This command is used to apply changes from a specific commit, or to apply a commit from a branch: 
 ```bash
 # merge a commit from another branch to master
 git checkout master
-git cherry-pick <commit SHA>  
+git cherry-pick <commit SHA>  # to apply changes from a specific commit
+git cherry-pick <first_commit_SHA>^..<second_commit_SHA>  # to include a range of commits from one specific commit up to another
 ```
 
 - You can put a push rule for commit messages in Gitlab:

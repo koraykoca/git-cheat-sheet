@@ -53,9 +53,9 @@ Now we can make changes on them on our machine. After editing, we can send our l
 ```bash
 git add --all  # or git add .
 # or we can specify the file
-git add file1_name
+git add <file1_name>
 # or we can specify many files
-git add file1_name file2_name file3_name 
+git add <file1_name> <file2_name> <file3_name>
 # or we can exclude new files and just update all tracked files
 git add -u  
 # or we can decide which changes to include in the current commit
@@ -70,7 +70,7 @@ git rm --cached <file_name>
 When we want to discard changes and undo the add command, we can use _**git reset <file_name>**_ command. We check always the status of our GIT using _**git status**_ command. This command shows us what branch we're on, what files are in the working or staging directory, and any other important information. We will save our changes to the local repository with _**git commit**_ command. We can inform our teammates about the changes with a short message. For this, we will use the following to commit the file and set the commit message:
 
 ```bash
-git commit name_of_the_file -m "commit_message"
+git commit <name_of_the_file> -m <"commit_message">
 ```
 
 If you issue a git commit without specifying a commit message, the default Git editor (Vim) will pop up. Here, you can write your commit message. However, we can make e.g. Notepad++ as Git’s editor by executing the command:
@@ -81,8 +81,8 @@ git config --global core.editor <path_to_notepad++.exe> -multiInst -notabbar -no
 Git can ask about our identity after executing this command. In this case we will set our name and e-mail address as:
 
 ```bash
-git config user.name "user_name"
-git config user.email "email_address"
+git config user.name <user_name>
+git config user.email <email_address>
 ```
 
 Now we are ready to send our changes to the online repository, so that they can be shared with the rest of the world. However, when somebody else on our team made some changes in the repository which we don't have them on our local repository, we need to _**pull**_ these remote changes because there can be some kind of conflicts between what we have locally and what is living online. In this case _**git pull**_ command takes recent changes that are living on the remote repository and get them to the local repository.
@@ -90,6 +90,55 @@ After that we can send our changes without problem with _**git push**_ command. 
 
 ```bash
 git push
+```
+
+## Git Branching
+
+Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command. This command switches to the specified branch and updates the working directory. 
+
+```bash
+git branch <branch_name>
+git checkout <branch_name>
+git checkout -  # checkout to the previous branch you were working with (it's similar to `cd -` for directories)
+```
+
+It's typical to create a new branch and switch to that new branch at the same time. This can be done in one operation with
+
+```bash
+git checkout -b <branch_name>
+```
+
+You can change the name of the current branch with this command:
+```bash
+git branch -m <new_name>
+```
+
+When we want to push something that is in our new branch to the main/master branch, we need to first switch to the main branch. Then, we use _**git merge**_ command to merge our new branch into the main branch. After merging, we will be done with the new branch which we created and can delete it with _**git branch -d branch_name**_. If we don't want to delete and keep the branch also on the remote repository, we use 
+```bash
+git push --set-upstream origin <branch_name>
+```
+But generally, the whole process will be like as the following:
+```bash
+git checkout -b <branch_name>  # branch creating and switching to it
+# After doing some changes on the files
+git add <file_name>            # changes are staged in order to be committed
+git commit -m <"some_message"> # telling what you changed/did
+git checkout main              # switching to the main branch
+git merge <branch_name>        # get changes back to the main branch
+git push                       # changes pushed to the main branch
+git branch -d <branch_name>    # deleting the new branch
+```
+
+Some operations with branches:
+```bash
+git branch -a                             # to see branches
+git remote set-head origin -a             # to make current checkouted branch origin
+git branch -m <oldname> <newname>         # to change the name of a branch
+git branch -u origin/<BRANCH> <BRANCH>    # to set up a branch to track a remote branch
+git branch -d <branch_name>               # to delete branch locally
+git push origin --delete <branch_name>    # to delete branch remotely
+git fetch origin                          # to retrieve all branches and updates
+git fetch origin --prune                  # to connect to a shared remote repository remote and fetch all remote branch refs. It will then delete remote refs that are no longer in use on the remote repository
 ```
 
 ## Operations with commits
@@ -141,54 +190,6 @@ git cherry-pick <first_commit_SHA>^..<second_commit_SHA>  # to include a range o
 - You can put a push rule for commit messages in Gitlab:
  `Menu > Projects > Settings > Repository > Push Rules`
 
-## Git Branching
-
-Branching means that we diverge from the main line of the development and continue to work without messing with that main line. We prefer to work on the copy of the master branch and work on the project independently from our teammates. After that we will merge our changes/branch with the main branch. To create a new branch, we use _**git branch**_ command. To switch to an existing branch, we use _**git checkout**_ command. This command switches to the specified branch and updates the working directory.
-
-```bash
-git branch branch_name
-git checkout branch_name
-```
-
-It's typical to create a new branch and switch to that new branch at the same time. This can be done in one operation with
-
-```bash
-git checkout -b branch_name
-```
-
-You can change the name of the current branch with this command:
-```bash
-git branch -m <new_name>
-```
-
-When we want to push something that is in our new branch to the main/master branch, we need to first switch to the main branch. Then, we use _**git merge**_ command to merge our new branch into the main branch. After merging, we will be done with the new branch which we created and can delete it with _**git branch -d branch_name**_. If we don't want to delete and keep the branch also on the remote repository, we use 
-```bash
-git push --set-upstream origin <branch_name>
-```
-But generally, the whole process will be like as the following:
-```bash
-git checkout -b <branch_name>  # branch creating and switching to it
-# After doing some changes on the files
-git add <file_name>            # changes are staged in order to be committed
-git commit -m "some_message"   # telling what you changed/did
-git checkout main              # switching to the main branch
-git merge <branch_name>        # get changes back to the main branch
-git push                       # changes pushed to the main branch
-git branch -d <branch_name>    # deleting the new branch
-```
-
-Some operations with branches:
-```bash
-git branch -a                             # to see branches
-git remote set-head origin -a             # to make current checkouted branch origin
-git branch -m <oldname> <newname>         # to change the name of a branch
-git branch -u origin/<BRANCH> <BRANCH>    # to set up a branch to track a remote branch
-git branch -d branch_name                 # to delete branch locally
-git push origin --delete branch_name      # to delete branch remotely
-git fetch origin                          # to retrieve all branches and updates
-git fetch origin --prune                  # to connect to a shared remote repository remote and fetch all remote branch refs. It will then delete remote refs that are no longer in use on the remote repository
-```
-
 ## Git Rebase
 Git rebase rewrites commits from one branch onto another branch. It is a useful alternative to merging and it gives us a cleaner linear history. Rebase means we are making the last commit of the target branch (e.g. main branch) base commit of our branch, and then we will add/move our commits onto this base commit. 
 
@@ -200,7 +201,6 @@ git rebase main
 Cleaner history helps us troubleshoot bugs faster. Therefore, before making a pull request from our branch into main/master branch, it can be better to use git rebase instead of git merge and then create a pull request. However, if you have commits which other team members pulled them down and worked on them, then rewriting those commits and pushing them again will be not a good idea, because other team members will have to re-merge their work and things will get messy when you try to pull their work back into yours. 
 
 Git rebase is also useful when you solve conflicts in a PR. After solving the conflicts, you can force push and update your PR. 
-
 
 ## Pull Request (PR)
 A PR is created to ask owner of the project to pull your changes. You are asking the main/master repository's owner to pull files from your repository. This process is like following:
@@ -221,12 +221,12 @@ After testing, you can checkout to the main/master branch.
 ## Git stash
 _**git stash**_ command is great when we are not ready to commit the changes, but we want to switch branches or we want to rewert back temporarily to where you started. We can do a stash on these changes and git will save them in a temporary space. 
 ```bash
-git stash save "a_message"  # create a stash
-git stash push -m "a_message" <file_path>  # to save a specific path to the stash
+git stash save <a_message>  # create a stash
+git stash push -m <a_message> <file_path>  # to save a specific path to the stash
 git stash list              # see the stashes 
-git stash apply stash_id    # apply the changes in the stash
+git stash apply <stash_id>  # apply the changes in the stash
 git stash pop               # take the first stash in the list, apply those changes and delete/drop the stash 
-git stash drop stas_id      # delete the stash
+git stash drop <stash_id>   # delete the stash
 git stash clear             # delete all stashes
 ```
 
@@ -247,11 +247,11 @@ git reset --merge
 When there are changes or new branches in the main repository, we need to take them into our forked repository to be able to work on them. First of all, we need to go to the directory where we cloned the repository. We set the original repository as our upstream repository and we fetch the upstream from the original repository. After that, we will create and checkout to the branch which was newly added to the original repository (to create a branch in the same repo, _**git branch branch_name**_ or, more commonly _**git checkout -b branch_name**_, the latter creates the branch then checks it out so we can immediately start working on it) and pull the changes into our local repository then push to the forked repository. The process is as following:
 
 ```bash
-git remote add upstream original_repo_url  # upstream points the original repo
+git remote add upstream <original_repo_url>  # upstream points the original repo
 git fetch upstream   # fetch tells git: "download the data to the local repository , but don't automatically merge it"
-git checkout -b original_repo_branch_to_transfer
-git pull upstream original_repo_branch_to_transfer  # pull tells git: "fetch it, and also merge it with my current branch."
-git push --set-upstream origin original_repo_branch_to_transfer
+git checkout -b <original_repo_branch_to_transfer>
+git pull upstream <original_repo_branch_to_transfer>  # pull tells git: "fetch it, and also merge it with my current branch."
+git push --set-upstream origin <original_repo_branch_to_transfer>
 ```
 
 ## .gitignore file
@@ -336,7 +336,7 @@ git push --mirror github
 ```
 - to merge branches from two projects
 ```bash
-git merge branch_name --allow-unrelated-histories
+git merge <branch_name> --allow-unrelated-histories
 ```
 - push to both Github and Gitlab 
 ```bash

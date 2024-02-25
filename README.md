@@ -301,6 +301,13 @@ We can have another repository within one repository. This is useful when you ha
 git submodule update
 ```
 
+To update a specific submodule:
+```bash
+git submodule update --init --remote <submodule_path>  # --remote flag ensures that the submodule is updated to the latest commit on the branch specified in the .gitmodules file
+cd <submodule_path>
+git checkout <branch-name>
+```
+
 To apply a git command to all initialized submodules, use git submodule foreach:
 ```bash
 git submodule foreach git checkout master
